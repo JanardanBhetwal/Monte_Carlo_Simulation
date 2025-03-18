@@ -13,24 +13,33 @@ class PremierLeagueSimulation:
     def __init__(self):
             # Team names in the same order as the provided data
             self.team_names = [
-                'Liverpool', 'Man_City', 'Arsenal', 'Man_Utd', 'Chelsea', 
-                'Tottenham', 'NewCastle', 'Aston_Villa', 'West_Ham', 'Brighton'
-            ]
-            
-            # Last three years of xGF data (most recent first)
-            xgf_data = [
-                [2.08, 2.03, 1.83, 1.51, 1.6, 1.73, 1.57, 1.46, 1.3, 1.59],
-                [1.89, 1.96, 1.94, 1.77, 1.61, 1.62, 1.77, 1.38, 1.51, 1.94],
-                [2.29, 2.36, 1.86, 1.69, 1.95, 1.65, 1.43, 1.50, 1.56, 1.58]
-            ]
-            
-            # Last three years of xGA data (most recent first)
-            xga_data = [
-                [1.23, 0.93, 0.92, 1.73, 1.51, 1.38, 1.51, 1.38, 1.85, 1.33],
-                [1.29, 0.99, 1.21, 1.49, 1.48, 1.64, 1.32, 1.47, 1.60, 1.27],
-                [1.08, 0.89, 1.41, 1.65, 1.20, 1.57, 1.72, 1.54, 1.71, 1.54]
-            ]
-            
+    'Liverpool', 'Man_City', 'Arsenal', 'Man_Utd', 'Chelsea', 
+    'Tottenham', 'NewCastle', 'Aston_Villa', 'West_Ham', 'Brighton',
+    'Nottingham_Forest', 'Fulham', 'AFC_Bournemouth', 'Brentford', 
+    'Crystal_Palace', 'Everton', 'Wolves', 'Ipswich_Town', 
+    'Leicester_City', 'Southampton'
+]
+
+# Last three years of xGF data (most recent first)
+xgf_data = [
+    [2.08, 2.03, 1.83, 1.51, 1.6, 1.73, 1.57, 1.46, 1.3, 1.59, 
+     1.28, 1.44, 1.51, 1.39, 1.32, 1.43, 1.27, 1.59, 1.6, 1.65],
+    [1.89, 1.96, 1.94, 1.77, 1.61, 1.62, 1.77, 1.38, 1.51, 1.94, 
+     1.18, 1.42, 1.18, 1.42, 1.34, 1.39, 1.32, 1.96, 1.34, 1.32],
+    [2.29, 2.36, 1.86, 1.69, 1.95, 1.65, 1.43, 1.50, 1.56, 1.58, 
+     1.5, 1.92, 1.58, 1.47, 1.41, 1.44, 1.37, 1.46, 1.46, 1.57]
+]
+
+# Last three years of xGA data (most recent first)
+xga_data = [
+    [1.23, 0.93, 0.92, 1.73, 1.51, 1.38, 1.51, 1.38, 1.85, 1.33, 
+     1.52, 1.56, 1.54, 1.62, 1.38, 1.47, 1.65, 1.18, 1.12, 1.15],
+    [1.29, 0.99, 1.21, 1.49, 1.48, 1.64, 1.32, 1.47, 1.60, 1.27, 
+     1.76, 1.65, 1.96, 1.77, 1.55, 1.75, 1.70, 0.94, 1.65, 1.60],
+    [1.08, 0.89, 1.41, 1.65, 1.20, 1.57, 1.72, 1.54, 1.71, 1.54, 
+     1.38, 1.15, 1.27, 1.71, 1.51, 1.77, 1.70, 1.14, 1.81, 1.67]
+]
+
             # Calculate weighted averages (more weight to recent seasons)
             weights = [0.5, 0.3, 0.2]  # 50% last year, 30% two years ago, 20% three years ago
             
@@ -740,7 +749,8 @@ def main():
     simulation = PremierLeagueSimulation()
 
     # Number of Monte Carlo iterations to run
-    num_simulations = 1000
+    num_simulations = input("Enter the number of Monte Carlo simulations to run: ")
+    num_simulations = int(num_simulations)
 
     # Run the simulation
     simulation.run_monte_carlo(num_simulations)
