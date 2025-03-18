@@ -13,35 +13,35 @@ class PremierLeagueSimulation:
     def __init__(self):
             # Team names in the same order as the provided data
             self.team_names = [
-    'Liverpool', 'Man_City', 'Arsenal', 'Man_Utd', 'Chelsea', 
-    'Tottenham', 'NewCastle', 'Aston_Villa', 'West_Ham', 'Brighton',
-    'Nottingham_Forest', 'Fulham', 'AFC_Bournemouth', 'Brentford', 
-    'Crystal_Palace', 'Everton', 'Wolves', 'Ipswich_Town', 
-    'Leicester_City', 'Southampton'
-]
+            'Liverpool', 'Man_City', 'Arsenal', 'Man_Utd', 'Chelsea', 
+            'Tottenham', 'NewCastle', 'Aston_Villa', 'West_Ham', 'Brighton',
+            'Nottingham_Forest', 'Fulham', 'AFC_Bournemouth', 'Brentford', 
+            'Crystal_Palace', 'Everton', 'Wolves', 'Ipswich_Town', 
+            'Leicester_City', 'Southampton'
+            ]
 
-# Last three years of xGF data (most recent first)
-xgf_data = [
-    [2.08, 2.03, 1.83, 1.51, 1.6, 1.73, 1.57, 1.46, 1.3, 1.59, 
-     1.28, 1.44, 1.51, 1.39, 1.32, 1.43, 1.27, 1.59, 1.6, 1.65],
-    [1.89, 1.96, 1.94, 1.77, 1.61, 1.62, 1.77, 1.38, 1.51, 1.94, 
-     1.18, 1.42, 1.18, 1.42, 1.34, 1.39, 1.32, 1.96, 1.34, 1.32],
-    [2.29, 2.36, 1.86, 1.69, 1.95, 1.65, 1.43, 1.50, 1.56, 1.58, 
-     1.5, 1.92, 1.58, 1.47, 1.41, 1.44, 1.37, 1.46, 1.46, 1.57]
-]
+        # Last three years of xGF data (most recent first)
+            xgf_data = [
+                [2.08, 2.03, 1.83, 1.51, 1.6, 1.73, 1.57, 1.46, 1.3, 1.59, 
+                 1.28, 1.44, 1.51, 1.39, 1.32, 1.43, 1.27, 1.59, 1.6, 1.65],
+                [1.89, 1.96, 1.94, 1.77, 1.61, 1.62, 1.77, 1.38, 1.51, 1.94, 
+                 1.18, 1.42, 1.18, 1.42, 1.34, 1.39, 1.32, 1.96, 1.34, 1.32],
+                [2.29, 2.36, 1.86, 1.69, 1.95, 1.65, 1.43, 1.50, 1.56, 1.58, 
+                 1.5, 1.92, 1.58, 1.47, 1.41, 1.44, 1.37, 1.46, 1.46, 1.57]
+             ]
 
-# Last three years of xGA data (most recent first)
-xga_data = [
-    [1.23, 0.93, 0.92, 1.73, 1.51, 1.38, 1.51, 1.38, 1.85, 1.33, 
-     1.52, 1.56, 1.54, 1.62, 1.38, 1.47, 1.65, 1.18, 1.12, 1.15],
-    [1.29, 0.99, 1.21, 1.49, 1.48, 1.64, 1.32, 1.47, 1.60, 1.27, 
-     1.76, 1.65, 1.96, 1.77, 1.55, 1.75, 1.70, 0.94, 1.65, 1.60],
-    [1.08, 0.89, 1.41, 1.65, 1.20, 1.57, 1.72, 1.54, 1.71, 1.54, 
-     1.38, 1.15, 1.27, 1.71, 1.51, 1.77, 1.70, 1.14, 1.81, 1.67]
-]
+            # Last three years of xGA data (most recent first)
+            xga_data = [
+                [1.23, 0.93, 0.92, 1.73, 1.51, 1.38, 1.51, 1.38, 1.85, 1.33, 
+                 1.52, 1.56, 1.54, 1.62, 1.38, 1.47, 1.65, 1.18, 1.12, 1.15],
+                [1.29, 0.99, 1.21, 1.49, 1.48, 1.64, 1.32, 1.47, 1.60, 1.27, 
+                 1.76, 1.65, 1.96, 1.77, 1.55, 1.75, 1.70, 0.94, 1.65, 1.60],
+                [1.08, 0.89, 1.41, 1.65, 1.20, 1.57, 1.72, 1.54, 1.71, 1.54, 
+                 1.38, 1.15, 1.27, 1.71, 1.51, 1.77, 1.70, 1.14, 1.81, 1.67]
+            ]
 
             # Calculate weighted averages (more weight to recent seasons)
-            weights = [0.5, 0.3, 0.2]  # 50% last year, 30% two years ago, 20% three years ago
+            weights = [0.6, 0.3, 0.1]  # 60% last year, 30% two years ago, 10% three years ago
             
             # Calculate weighted xGF and xGA for each team
             weighted_xgf = {}
@@ -69,18 +69,14 @@ xga_data = [
                 
                 # Team colors (keeping the original colors)
                 team_colors = {
-                    'Liverpool': '#C8102E',
-                    'Man_City': '#6CABDD',
-                    'Arsenal': '#EF0107',
-                    'Man_Utd': '#DA291C',
-                    'Chelsea': '#034694',
-                    'Tottenham': '#132257',
-                    'NewCastle': '#241F20',
-                    'Aston_Villa': '#95BFE5',
-                    'West_Ham': '#7A263A',
-                    'Brighton': '#0057B8'
-                }
-                
+                    'Liverpool': '#C8102E', 'Man_City': '#6CABDD', 'Arsenal': '#EF0107',
+                    'Man_Utd': '#DA291C', 'Chelsea': '#034694', 'Tottenham': '#132257',
+                    'NewCastle': '#241F20', 'Aston_Villa': '#95BFE5', 'West_Ham': '#7A263A',
+                    'Brighton': '#0057B8', 'Nottingham_Forest': '#DD0000', 'Fulham': '#000000',
+                    'AFC_Bournemouth': '#DA291C', 'Brentford': '#E30613', 'Crystal_Palace': '#1B458F',
+                    'Everton': '#003087', 'Wolves': '#FDB913', 'Ipswich_Town': '#3D6BA6',
+                    'Leicester_City': '#003087', 'Southampton': '#D71920'
+                 }
                 # Estimate home advantage based on historical data
                 # Using a fixed value for all teams, could be refined with more data
                 home_advantage = 12
@@ -542,7 +538,7 @@ xga_data = [
         # Plot violin plots for each team's points distribution
         violin_parts = plt.violinplot(
             [points_data[team] for team in sorted_teams],
-            showmeans=True,
+            showmeans=False,
             showmedians=False,
             vert=False
         )
@@ -767,22 +763,22 @@ def main():
 
     # Plot champion probabilities
 #    plt.figure(figsize=(12, 6))
-    simulation.plot_champion_probabilities()
+    simulation.plot_champion_probabilities(figsize=(14,10))
     plt.show()
 
     # Plot position probabilities
  #   plt.figure(figsize=(14, 8))
-    simulation.plot_position_probabilities()
+    simulation.plot_position_probabilities(figsize=(14,10))
     plt.show()
 
     # Plot expected points distribution
   #  plt.figure(figsize=(12, 8))
-    simulation.plot_expected_points_distribution()
+    simulation.plot_expected_points_distribution(figsize=(14,12))
     plt.show()
 
     # Plot top-four probabilities
    # plt.figure(figsize=(12, 6))
-    simulation.plot_top_four_probabilities()
+    simulation.plot_top_four_probabilities(figsize=(14,6))
     plt.show()
 
     # Interactive match simulation
